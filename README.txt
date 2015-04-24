@@ -3,19 +3,40 @@ README.txt Specifications 1.0
 
 BSTree = Binary Search Tree (Árvores de Busca Binária)
 AVLTree = Árvore AVL
+RBTree = Red Black Tree (Árvore Vermelho-Preta)
 
-						~/ÁRVORE DE BUSCA BINÁRIA GERAL/~
+
 O código foi totalmente escrito em C e em ambiente Windows usando a IDE Code Blocks.
 
-Pode-se executar o arquivo 'BSTree.exe' para verificar o resultado da compilação do código 'BSTree.c' da Árvore de Busca Binária. Ou, para compilá-lo:
-	gcc -o BSTree.exe BSTree.c
+
+						~/MAKEFILE INSTRUCTIONS/~
+
+O arquivo Makefile é uma arquivo para compilação em Linux, servindo, o mesmo arquivo, para compilar todas as árvores.
 
 
-						~/MAKEFILE ÁRVORE AVL/~
+					*Árvore de Busca Binária Geral*
 
-O makefile para os arquivos da árvore AVL foi feito para compilação em Linux. No terminal, basta entrar no diretório onde os arquivos AVLHeader.h, AVLTree.c, AVLTreeMain.c e AVLMakefile.txt estão localizados (todos precisam estar na mesma pasta) e, então, executar o comando: 
-	make -f AVLMakefile.txt
+O arquivo default para compilação é o arquivo da Árvore BB Geral. Ou seja, caso nao seja especificado qual arquivo será compilado, este será executado caso os arquivos estejam na mesma pasta. Em caso contrário, para compilar estes arquivos propositalmente, enquanto no terminal, basta entrar no diretório onde os arquivos BSTree.c, BSTreeMain.c e BSTreeHeader.h estão localizados, colocar o arquivo Makefile na mesma pasta e executar o comandoÇ
+	make BSTree
+
+Para executá-lo basta digitar o comando(enquanto no mesmo diretório)Ç
+	./BSTree
+
+
+
+						*Árvore AVL*
+
+Para os arquivos da árvore AVL, no terminal, basta entrar no diretório onde os arquivos AVLHeader.h, AVLTree.c e AVLTreeMain.c estão localizados e colocar o arquivo Makefile na mesma pasta(todos precisam estar na mesma pasta) e, então, executar o comando: 
+	make avlTree
 
 Para executá-lo basta digitar o comando (enquanto na mesmo diretório):
 	./avlTree
- 
+
+
+					*Árvore Rubro-Negra(Vermelho-Preta)*
+
+	Para os arquivos da árvore rubro-negra, enquanto no terminal, basta entrar no diretório onde os arquivos RBTree.c, RBTreeHeader.h e RBTreeMain.c estão localizados e colocar o arquivo geral Makefile na mesma pasta e, então, executar o comando:
+	make RBTree
+
+Para executá-lo, basta digitar o comando(enquanto no mesmo diretório):
+	./RBTree

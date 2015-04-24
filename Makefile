@@ -1,15 +1,25 @@
-HEADER = AVLTree.h
-OBJECTS = AVLTreeMain.o AVLTree.o
+﻿HEADER = AVLTree.h
+OBJECTSDEFAULT = BSTreeMain.o BSTree.o
+OBJECTSAVL = AVLTreeMain.o AVLTree.o
+OBJECTSRB = RBTreeMain.o RBTree.o
 CC = gcc
 
-default: avlTree
+default: BSTree
 
 %.o: %.c $(HEADER)
 	$(CC) -c $< -o $@
 
-avlTree: $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
+BSTree: $(OBJECTSDEFAULT)
+	$(CC) $(OBJECTSDEFAULT) -o $@
+
+avlTree: $(OBJECTSAVL)
+	$(CC) $(OBJECTSAVL) -o $@
+
+RBTree: $(OBJECTSRB)
+	$(CC) $(OBJECTSRB) -o $@
+
 
 clean:
-	-rm -f $(OBJECTS)
-	-rm -f avlTree
+	-rm -f $(OBJECTSDEFAULT) $(OBJECTSAVL) $(OBJECTSRB)
+
+	-rm -f avlTree BSTree RBTree

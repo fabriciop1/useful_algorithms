@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "RBHeader.h"
+#include "header.h"
 
 int main()
 {

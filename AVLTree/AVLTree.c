@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "AVLHeader.h"
+#include "header.h"
 
 Node* insert(Node* root, Node *newNode)
 {

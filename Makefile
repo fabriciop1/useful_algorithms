@@ -1,4 +1,4 @@
-﻿HEADER = AVLTree.h
+﻿HEADER = header.h
 OBJECTSDEFAULT = BSTreeMain.o BSTree.o
 OBJECTSAVL = AVLTreeMain.o AVLTree.o
 OBJECTSRB = RBTreeMain.o RBTree.o

@@ -1,7 +1,8 @@
-﻿HEADER = header.h
+HEADER = header.h
 OBJECTSDEFAULT = BSTreeMain.o BSTree.o
 OBJECTSAVL = AVLTreeMain.o AVLTree.o
 OBJECTSRB = RBTreeMain.o RBTree.o
+OBJECTSHEAP = HeapMain.o Heap.o
 CC = gcc
 
 default: BSTree
@@ -18,8 +19,9 @@ avlTree: $(OBJECTSAVL)
 RBTree: $(OBJECTSRB)
 	$(CC) $(OBJECTSRB) -o $@
 
+Heap: $(OBJECTSHEAP)
+	$(CC) $(OBJECTSHEAP) -o $@
 
 clean:
-	-rm -f $(OBJECTSDEFAULT) $(OBJECTSAVL) $(OBJECTSRB)
-
-	-rm -f avlTree BSTree RBTree
+	-rm -f *.o
+	-rm -f avlTree BSTree RBTree Heap

@@ -1,8 +1,10 @@
-HEADER = header.h
+HEADER = header.h hash.h
 OBJECTSDEFAULT = BSTreeMain.o BSTree.o
 OBJECTSAVL = AVLTreeMain.o AVLTree.o
 OBJECTSRB = RBTreeMain.o RBTree.o
 OBJECTSHEAP = HeapMain.o Heap.o
+OBJECTSLINKEDHASH = main.o linkedList.o hash.o
+OBJECTSHASH = main.o hash.o
 CC = gcc
 
 default: BSTree
@@ -22,6 +24,13 @@ RBTree: $(OBJECTSRB)
 Heap: $(OBJECTSHEAP)
 	$(CC) $(OBJECTSHEAP) -o $@
 
+LinkedHash: $(OBJECTSLINKEDHASH)
+	$(CC) $(OBJECTSLINKEDHASH) -o $@  -lm
+
+OpenedHash: $(OBJECTSHASH)
+	$(CC) $(OBJECTSHASH) -9 $@
+
+
 clean:
 	-rm -f *.o
-	-rm -f avlTree BSTree RBTree Heap
+	-rm -f avlTree BSTree RBTree Heap LinkedHash OpenedHash

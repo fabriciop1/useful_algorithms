@@ -49,3 +49,13 @@ Para executá-lo, basta digitar o comando(enquanto no mesmo diretório):
 Para executá-lo, basta digitar o comando(enquanto no mesmo diretório) e seguir as instruções do programa:
 	./Heap
 
+O mesmo procedimento é adotado para ambas as Hashes. No hash encadeado, foi utilzado o método da multiplicação para a função. E, na hash por endereçamento aberto, a tentativa linear foi a opção escolhida.
+
+
+RELATÓRIO:
+
+- AVL Concluída
+- Rubro-Negra Concluída com método remover
+- Heap Concluída
+- Hash Encadeada concluída
+- Hash por Endereçamento aberto por tentativa linear concluída

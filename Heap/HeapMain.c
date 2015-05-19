@@ -64,9 +64,9 @@ int main()
                 printHeap(heap);
                 break;
             case 4:
+		size = heapSize;
                 heapSort(heap);
                 printf("\nHeap Sorted.\nVector = ");
-                heapSize = size;
                 for(i = 1; i <= size; i++)
                 {
                     printf("%d ", heap[i]);

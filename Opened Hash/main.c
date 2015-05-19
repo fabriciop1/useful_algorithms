@@ -33,6 +33,6 @@ int main()
                 break;
         }
     } while (select != 0);
-    
+    free(table);
     return 0;
 }

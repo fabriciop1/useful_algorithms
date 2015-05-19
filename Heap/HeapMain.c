@@ -64,17 +64,16 @@ int main()
                 printHeap(heap);
                 break;
             case 4:
-                sizeTemp = heapSize;
                 heapSort(heap);
                 printf("\nHeap Sorted.\nVector = ");
-                heapSize = sizeTemp;
-                for(i = 1; i <= sizeTemp; i++)
+                heapSize = size;
+                for(i = 1; i <= size; i++)
                 {
                     printf("%d ", heap[i]);
                 }
-                free(sizeTemp);
                 printf("\n\nExiting program...\n");
-                return 0;
+                select = 0;
+		break;
             default:
                 printf("\n\nTry again. Value is not valid.\n\n");
                 break;

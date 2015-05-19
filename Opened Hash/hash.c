@@ -16,11 +16,6 @@ void print(int* table)
     int i;
     for(i = 0; i < m; i++)
     {
-	if(table[i] == -32767)
-	{
-		printf("Empty \n");
-		continue;
-	}
         printf("%d \n", table[i]);
     }
 }

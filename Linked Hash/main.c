@@ -31,6 +31,7 @@ int main()
                 break;
             case 4:
                 hash_free_all(T);
+                initializeTable(T);
                 break;
             default:
                 printf("\nWrong. Try again.\n");

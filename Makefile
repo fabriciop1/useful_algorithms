@@ -28,7 +28,7 @@ LinkedHash: $(OBJECTSLINKEDHASH)
 	$(CC) $(OBJECTSLINKEDHASH) -o $@  -lm
 
 OpenedHash: $(OBJECTSHASH)
-	$(CC) $(OBJECTSHASH) -9 $@
+	$(CC) $(OBJECTSHASH) -o $@
 
 
 clean:

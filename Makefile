@@ -5,6 +5,7 @@ OBJECTSRB = RBTreeMain.o RBTree.o
 OBJECTSHEAP = HeapMain.o Heap.o
 OBJECTSLINKEDHASH = main.o linkedList.o hash.o
 OBJECTSHASH = main.o hash.o
+OBJKRUSKAL = main.o kruskal.o
 CC = gcc
 
 default: BSTree
@@ -30,7 +31,10 @@ LinkedHash: $(OBJECTSLINKEDHASH)
 OpenedHash: $(OBJECTSHASH)
 	$(CC) $(OBJECTSHASH) -o $@
 
+Kruskal: $(OBJKRUSKAL)
+	$(CC) $(OBJKRUSKAL) -o $@
+
 
 clean:
 	-rm -f *.o
-	-rm -f avlTree BSTree RBTree Heap LinkedHash OpenedHash
+	-rm -f avlTree BSTree RBTree Heap LinkedHash OpenedHash Kruskal

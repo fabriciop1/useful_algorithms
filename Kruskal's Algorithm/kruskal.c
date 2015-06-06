@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "header.h"
 #include<limits.h>
+#include "header.h"
 
                                                     /* FABRICIO PAES FERREIRA */
 
@@ -46,15 +46,20 @@ void makeSet(int* sets, int vertex)
 void print(int** adjMatrix)
 {
     printf("\n# Minimum Adjacency Matrix for the graph: # \n");
-    int i, j;
+    int i, j, minimumCost = 0;
     for(i = 0; i < vertices; i++)
     {
         for(j = 0; j < vertices; j++)
         {
             printf("%d ", adjMatrix[i][j]);
+            if(adjMatrix[i][j] != 0 && i < j)
+            {
+                minimumCost += adjMatrix[i][j];
+            }
         }
         printf("\n");
     }
+    printf("\nMinimum Cost: %d \n\n", minimumCost);
 }
 
 int findSet(int* sets, int vertex)
@@ -62,14 +67,18 @@ int findSet(int* sets, int vertex)
     return sets[vertex];
 }
 
-void setUnion(int* sets, int vertice1, int vertice2)
+void setUnion(int* sets, int vertex1, int vertex2)
 {
+    int vertexValue1 = sets[vertex1];
+    int vertexValue2 = sets[vertex2];
     int i;
-    if (sets[vertice1] < sets[vertice2])
+
+    for (i = 0; i < vertices; i++)
     {
-        sets[vertice2] = sets[vertice1];
-    } else {
-        sets[vertice1] = sets[vertice2];
+        if (sets[i] == vertexValue1)
+        {
+            sets[i] = vertexValue2;
+        }
     }
 }
 
@@ -99,7 +108,7 @@ int** Kruskal(int** adjMatrix)
         {
             newMatrix[edges[i].u][edges[i].v] = newMatrix[edges[i].v][edges[i].u] = edges[i].cost; // T = T U (e)
             setUnion(sets, edges[i].u, edges[i].v); // uniao dos componentes conexos de u e v
-            j++;
+            j++; //arestas++
         }
     }
     return newMatrix;
@@ -136,18 +145,58 @@ int getNumEdges(int** matrix, int length)
     return edges;
 }
 
-void printMinimumCost(int** matrix)
+void breadthFirstSearch(int** adjMatrix, int root)
 {
-    int cost = 0, i, j;
+    int i;
+    int* neighboors;
+    Node* node;
+    int closedVector[vertices];
+    Queue* queue;
+
+    queue = initializeQueue();
+
+    QueueAdd(queue, root);
+
     for(i = 0; i < vertices; i++)
     {
-        for(j = 0; j < vertices; j++)
+        closedVector[i] = 0;
+    }
+
+    closedVector[root] = 1;
+    while(QueueIsEmpty(queue) == 0)
+    {
+        node = QueuePop(queue);
+        neighboors = getNeighboors(adjMatrix, node->key);
+        for(i = 0; i < length; i++)
         {
-            if (matrix[i][j] != 0 && i < j)
+            if (closedVector[neighboors[i]] == 0)
             {
-                cost += matrix[i][j];
+                QueueAdd(queue, neighboors[i]);
+                closedVector[neighboors[i]] = 1;
             }
         }
+        printf("%d ", node->key);
+        free(node);
     }
-    printf("\nMinimum Cost: %d\n", cost);
+    printf("\n\n");
+    excludeQueue(queue);
+}
+
+int* getNeighboors(int** adjMatrix, int v)
+{
+    int i = 0, j;
+    int* neighboors = malloc(vertices * sizeof(int));
+
+    length = 0;
+
+    for(j = 0; j < vertices; j++)
+    {
+        if(adjMatrix[v][j] != 0)
+        {
+            neighboors[i] = j;
+            i++;
+            length++;
+        }
+    }
+    return neighboors;
 }

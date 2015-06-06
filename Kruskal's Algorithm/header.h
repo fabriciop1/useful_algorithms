@@ -1,6 +1,8 @@
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
 
+#include "queue.h"
+
 /*                                                  Código feito por: FABRICIO PAES FERREIRA
         Universidade Federal Rural de Pernambuco - UAG
         Algoritmos e Estruturas de Dados II - Professor Rian Gabriel
@@ -15,8 +17,11 @@ typedef struct
 } Edge; // aresta
 
 int vertices; //numero de vertices
+int length;
 
-void getMinimumCost(int**); // retorna o custo minimo do grafo.
+int* getNeighboors(int**, int);
+void depthFirstSearch(int**, int);
+void breadthFirstSearch(int**, int);
 int getNumEdges(int**, int); // calcula quantas arestas tem em um grafo (em sua matriz adjacente)
 int** initializeMatrix(int**, int); // incializar matrix dinamica
 void makeSet(int*, int); //Cria os componentes conexos

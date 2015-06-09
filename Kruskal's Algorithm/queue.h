@@ -2,13 +2,13 @@
 #define QUEUE_H_INCLUDED
 
 
-typedef struct
+typedef struct Node
 {
     struct Node* next;
     int key;
 } Node;
 
-typedef struct
+typedef struct Queue
 {
     struct Node* root;
 } Queue;

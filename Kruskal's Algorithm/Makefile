@@ -9,9 +9,6 @@ main.o: main.c
 queue.o: queue.c queue.h
 	gcc -c queue.c -o queue.o
 
-kruskal.o: kruskal.c header.h queue.c main.c
-	gcc -c kruskal.c queue.c main.c -o kruskal.o
-
 
 clean:
 	-rm -f *.o

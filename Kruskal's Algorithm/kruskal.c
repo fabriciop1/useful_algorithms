@@ -169,10 +169,11 @@ void breadthFirstSearch(int** adjMatrix, int root)
         neighboors = getNeighboors(adjMatrix, node->key);
         for(i = 0; i < length; i++)
         {
-            if (closedVector[neighboors[i]] == 0)
+	    int v = neighboors[i];
+            if (closedVector[v] == 0)
             {
-                QueueAdd(queue, neighboors[i]);
-                closedVector[neighboors[i]] = 1;
+                QueueAdd(queue, v);
+                closedVector[v] = 1;
             }
         }
         printf("%d ", node->key);

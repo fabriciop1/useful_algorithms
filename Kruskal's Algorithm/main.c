@@ -41,13 +41,6 @@ int main()
 
                 print(newMatrix);
 
-                for(i = 0; i < vertices; i++)
-                {
-                    free(adjacencyMatrix[i]);
-                    free(newMatrix[i]);
-                }
-                free(adjacencyMatrix);
-                free(newMatrix);
                 break;
             case 2:
                 printf("\nVertices ordered by breadth: \n");
@@ -57,7 +50,16 @@ int main()
                 printf("\n\nTry again.\n\n");
         }
 
-    }while (select != 0);
+    } while (select != 0);
+
+     for(i = 0; i < vertices; i++)
+     {
+     	free(adjacencyMatrix[i]);
+        free(newMatrix[i]);
+      }
+        free(adjacencyMatrix);
+        free(newMatrix);
+
 
     return 0;
 }

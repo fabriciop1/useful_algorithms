@@ -147,7 +147,7 @@ int getNumEdges(int** matrix, int length)
 
 void breadthFirstSearch(int** adjMatrix, int root)
 {
-    int i;
+    int i, v;
     int* neighboors;
     Node* node;
     int closedVector[vertices];
@@ -169,7 +169,7 @@ void breadthFirstSearch(int** adjMatrix, int root)
         neighboors = getNeighboors(adjMatrix, node->key);
         for(i = 0; i < length; i++)
         {
-	    int v = neighboors[i];
+	    v = neighboors[i];
             if (closedVector[v] == 0)
             {
                 QueueAdd(queue, v);

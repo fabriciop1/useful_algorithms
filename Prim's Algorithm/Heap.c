@@ -17,14 +17,6 @@ int rightSon(int position)
     return (2 * position + 1);
 }
 
-int* adjustLength(int* vector)
-{
-    vector = realloc(vector, (heapLength * 2) * sizeof(int));
-    if (vector == NULL)
-        return NULL;
-    return vector;
-}
-
 void deleteHeap(int* vector)
 {
     free(vector);
@@ -43,8 +35,8 @@ int* initializeHeap()
 
 void buildHeap(int* vector, int size)
 {
-    heapSize = size;
     int i;
+    heapSize = size;
     for(i = heapSize/2; i >= 1; i--)
     {
        heapify(vector, i);
@@ -63,6 +55,13 @@ int heapExtract(int* vector)
     heapSize--;
     heapify(vector, 1);
     return out;
+}
+
+int inHeap(int* vector, int position)
+{
+    if (position <= heapSize)
+        return 1;
+    return 0;
 }
 
 int isEmpty(int* heap)
@@ -106,37 +105,30 @@ void heapify(int* vector, int position)
     }
 }
 
-void increaseKey(int* vector, int position, int key)
+void modifyKey(int* vector, int position, int key)
 {
-    if(vector[position] > key) {
-        printf("\nERROR. The new key is less than the current one.\n");
-        return;
-    }
-    vector[position] = key;
     if (type == 0) {
+            if(vector[position] > key) {
+                printf("\nERROR. The new key is less than the current one.\n");
+                return;
+            }
+        vector[position] = key;
         while(position > 1 && vector[father(position)] < vector[position])
         {
             exchange(vector, position, father(position));
             position = father(position);
         }
     } else if (type == 1) {
+        if(vector[position] < key) {
+            printf("\nERROR. The new key is more than the current one.\n");
+            return;
+        }
+        vector[position] = key;
         while(position > 1 && vector[father(position)] > vector[position])
         {
             exchange(vector, position, father(position));
             position = father(position);
         }
-    }
-}
-
-void heapSort(int* vector)
-{
-    int i;
-    buildHeap(vector, heapSize);
-    for(i = heapSize; i >= 2; i--)
-    {
-        exchange(vector, 1, i);
-        heapSize--;
-        heapify(vector, 1);
     }
 }
 
@@ -152,7 +144,7 @@ void heapInsert(int* vector, int key)
 {
     heapSize++;
     vector[heapSize] = -32767; // minimum length for an integer
-    increaseKey(vector, heapSize, key);
+    modifyKey(vector, heapSize, key);
 }
 
 void printHeap(int* vector)

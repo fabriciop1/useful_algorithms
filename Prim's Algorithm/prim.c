@@ -11,8 +11,12 @@ int** Prim(int** adjMatrix)
     int** newMatrix;
     int cost[numVertices];
     int previous[numVertices];
+    int marked[numVertices];
+    int* heap;
 
     newMatrix = initializeMatrix();
+    heap = initializeHeap();
+    type = 1;
 
     for(i = 0; i < numVertices; i++)
     {
@@ -21,36 +25,44 @@ int** Prim(int** adjMatrix)
     }
     cost[0] = 0;
 
-    int* heap = initializeHeap();
-    type = 1;
-
     for(i = 1; i <= numVertices; i++)
     {
-        heap[i] = i;
+        heap[i] = cost[i-1];
     }
 
     buildHeap(heap, numVertices);
 
-    while(isEmpty(heap) != 1)
+    while(!isEmpty(heap))
     {
-        vertex = heapExtract(heap) - 1;
-        printf("%d\n", vertex);
+        vertex = heapExtract(heap); //extrai o minimo custo
+
+        for(i = 0; i < numVertices; i++)
+        {
+            if (vertex == cost[i]) {
+                vertex = i;
+                break;
+            }
+        }
+     
         neighboors = getNeighboors(adjMatrix, vertex);
         for(i = 0; i < neighboorsLen; i++)
         {
             z = neighboors[i];
-            if(cost[z] > adjMatrix[vertex][z])
+            if(marked[z] != 1 && cost[z] > adjMatrix[vertex][z])
             {
                 cost[z] = adjMatrix[vertex][z];
+                if (inHeap(heap, z+1)) {
+                    modifyKey(heap, z+1, cost[z]);
+                }
                 previous[z] = vertex;
             }
         }
+        marked[vertex] = 1;
     }
 
-    for(i = 0; i < numVertices; i++)
+    for(i = 1; i < numVertices; i++)
     {
-        printf("%d ", previous[i]);
-      // newMatrix[i][previous[i]] = newMatrix[previous[i]][i] = cost[i];
+        newMatrix[i][previous[i]] = newMatrix[previous[i]][i] = cost[i];
     }
 
     return newMatrix;

@@ -38,7 +38,7 @@ int** Prim(int** adjMatrix)
 
         for(i = 0; i < numVertices; i++)
         {
-            if (vertex == cost[i]) {
+            if (vertex == cost[i] && marked[i] != 1) {
                 vertex = i;
                 break;
             }
@@ -59,6 +59,20 @@ int** Prim(int** adjMatrix)
         }
         marked[vertex] = 1;
     }
+
+    printf("\nVector Previous -> [ ");
+    for(i = 0; i < numVertices; i++)
+    {
+        printf("%d ", previous[i]);
+    }
+    printf("]");
+
+    printf("\nVector Cost ->     [ ");
+    for(i = 0; i < numVertices; i++)
+    {
+        printf("%d ", cost[i]);
+    }
+    printf("]\n\n"); 
 
     for(i = 1; i < numVertices; i++)
     {

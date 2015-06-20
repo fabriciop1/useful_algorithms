@@ -39,6 +39,8 @@ void Dijkstra(int** adjMatrix, int iniVertex)
 while(!isEmpty(heap)) // enquanto a heap não estiver vazia
     {
         u = heapExtract(heap); // u recebe o mínimo valor da heap, que é extraído da mesma
+	if(u == INT_MAX)
+	    continue;
 
         for(i = 0; i < numVertices; i++) { // procura-se o vértice pertencente àquele valor extraído da heap
             if(u == dist[i]) {

@@ -1,7 +1,7 @@
 all: dijkstra.exe
 
-dijkstra.exe: djikstra.o heap.o main.o
-	gcc djikstra.o heap.o main.o -o dijkstra.exe
+dijkstra.exe: dijkstra.o heap.o main.o
+	gcc dijkstra.o heap.o main.o -o dijkstra.exe
 
 heap.o: heap.c heap.h
 	gcc -c heap.c -o heap.o
